@@ -1,0 +1,259 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0F0602;
+  --surface:#1A0905;
+  --surface2:#221008;
+  --gold:#C8921A;
+  --gold2:#E8B840;
+  --gold3:#F5D070;
+  --saffron:#C84A08;
+  --cream:#FBF0DC;
+  --cream2:rgba(251,240,220,0.7);
+  --cream3:rgba(251,240,220,0.38);
+  --cream4:rgba(251,240,220,0.12);
+  --border:rgba(200,146,26,0.18);
+  --border2:rgba(200,146,26,0.32);
+}
+body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--cream);min-height:100vh;overflow-x:hidden;}
+
+/* bg texture */
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(200,146,26,0.13) 0%,transparent 70%),repeating-linear-gradient(45deg,rgba(200,146,26,0.025) 0,rgba(200,146,26,0.025) 1px,transparent 0,transparent 28px);pointer-events:none;z-index:0;}
+
+.wrap{max-width:660px;margin:0 auto;padding:2rem 1.25rem 3rem;position:relative;z-index:1;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:1rem 0 0.5rem;}
+.crown-svg{display:block;margin:0 auto 10px;}
+.wordmark{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--cream);letter-spacing:0.08em;line-height:1;}
+.wordmark em{color:var(--gold2);font-style:italic;font-weight:300;}
+.tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--gold);letter-spacing:0.12em;margin-top:5px;}
+.ornament-row{display:flex;align-items:center;gap:10px;margin:14px auto;max-width:260px;}
+.ornament-row::before,.ornament-row::after{content:'';flex:1;height:0.5px;background:linear-gradient(90deg,transparent,var(--gold));}
+.ornament-row::after{background:linear-gradient(90deg,var(--gold),transparent);}
+.orn-diamond{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
+
+/* ── TABS ── */
+.tabs-wrap{position:sticky;top:0;z-index:50;padding:10px 0 12px;background:linear-gradient(to bottom,var(--bg) 80%,transparent);}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
+.tab{background:transparent;border:0.5px solid var(--border);color:var(--cream3);padding:6px 15px;border-radius:2px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'Jost',sans-serif;}
+.tab:hover{border-color:var(--gold);color:var(--gold);}
+.tab.active{background:var(--gold);border-color:var(--gold);color:#0F0602;font-weight:500;}
+
+/* ── CATEGORY ── */
+.cat-section{margin-bottom:2.2rem;animation:fadeUp 0.35s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:1.2rem;}
+.cat-icon{width:32px;height:32px;border:0.5px solid var(--border2);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:var(--cream4);}
+.cat-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--gold2);letter-spacing:0.06em;}
+.cat-count{font-size:10px;color:var(--cream3);letter-spacing:0.1em;margin-top:1px;}
+.cat-line{flex:1;height:0.5px;background:linear-gradient(90deg,var(--border2),transparent);}
+
+/* ── ITEMS ── */
+.items-grid{display:grid;gap:1px;background:var(--border);}
+.item{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:13px 14px;background:var(--surface);transition:background 0.18s;}
+.item:first-child{border-radius:4px 4px 0 0;}
+.item:last-child{border-radius:0 0 4px 4px;}
+.item:only-child{border-radius:4px;}
+.item:hover{background:var(--surface2);}
+.item-left{flex:1;min-width:0;}
+.item-name-row{display:flex;align-items:center;gap:7px;margin-bottom:3px;}
+.dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;border:1px solid;}
+.dot.v{background:rgba(50,180,100,0.25);border-color:#3CB371;content:'';}
+.dot.n{background:rgba(200,40,40,0.25);border-color:#C83030;}
+.item-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--cream);letter-spacing:0.02em;}
+.item-desc{font-size:12px;color:var(--cream3);line-height:1.55;padding-left:16px;}
+.price-col{text-align:right;flex-shrink:0;}
+.item-price{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--gold2);}
+.item-price-sub{font-size:10px;color:var(--cream3);letter-spacing:0.06em;margin-top:1px;}
+
+/* ── LEGEND ── */
+.legend{display:flex;gap:20px;justify-content:center;margin:1rem 0 1.6rem;font-size:11px;color:var(--cream3);letter-spacing:0.06em;}
+.legend-item{display:flex;align-items:center;gap:5px;}
+.dot-sm{width:8px;height:8px;border-radius:2px;flex-shrink:0;border:1px solid;}
+
+/* ── FOOTER ── */
+.menu-footer{margin-top:2.5rem;text-align:center;}
+.footer-ornament{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);letter-spacing:0.5rem;opacity:0.5;margin-bottom:1rem;}
+.footer-text{font-size:11px;color:var(--cream3);line-height:2;letter-spacing:0.06em;}
+.footer-addr{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--gold);margin-top:6px;}
+</style>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <svg class="crown-svg" width="78" height="48" viewBox="0 0 78 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gc" x1="0" y1="0" x2="78" y2="48" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#F5D070"/>
+          <stop offset="40%" stop-color="#C8921A"/>
+          <stop offset="100%" stop-color="#9A6C10"/>
+        </linearGradient>
+        <linearGradient id="gb" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#F0C840"/>
+          <stop offset="100%" stop-color="#B07A10"/>
+        </linearGradient>
+        <filter id="gs"><feGaussianBlur stdDeviation="1.5" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+      </defs>
+      <!-- glow -->
+      <ellipse cx="39" cy="28" rx="30" ry="14" fill="rgba(200,146,26,0.12)" filter="url(#gs)"/>
+      <!-- crown body -->
+      <polygon points="10,42 10,18 22,29 39,4 56,29 68,18 68,42" fill="url(#gc)"/>
+      <!-- sheen overlay -->
+      <polygon points="10,42 10,22 22,31 39,7 56,31 68,22 68,30 56,38 39,32 22,38" fill="rgba(245,208,112,0.18)"/>
+      <!-- band -->
+      <rect x="10" y="32" width="58" height="10" rx="2" fill="url(#gb)"/>
+      <rect x="10" y="32" width="58" height="3" rx="1" fill="rgba(245,208,112,0.4)"/>
+      <!-- outline -->
+      <polygon points="10,42 10,18 22,29 39,4 56,29 68,18 68,42" fill="none" stroke="#E8B840" stroke-width="1" stroke-linejoin="round"/>
+      <!-- center gem -->
+      <circle cx="39" cy="7.5" r="3.8" fill="#C84A08" stroke="#E8B840" stroke-width="0.8"/>
+      <circle cx="39" cy="7.5" r="1.6" fill="#FF7030" opacity="0.85"/>
+      <!-- side gems -->
+      <circle cx="12.5" cy="21" r="2.8" fill="#7A1818" stroke="#E8B840" stroke-width="0.7"/>
+      <circle cx="12.5" cy="21" r="1.1" fill="#D04040" opacity="0.8"/>
+      <circle cx="65.5" cy="21" r="2.8" fill="#7A1818" stroke="#E8B840" stroke-width="0.7"/>
+      <circle cx="65.5" cy="21" r="1.1" fill="#D04040" opacity="0.8"/>
+      <!-- band gems -->
+      <rect x="24" y="33.5" width="4" height="7" rx="1" fill="#C8921A" stroke="#F5D070" stroke-width="0.5"/>
+      <rect x="37" y="33.5" width="4" height="7" rx="1" fill="#C8921A" stroke="#F5D070" stroke-width="0.5"/>
+      <rect x="50" y="33.5" width="4" height="7" rx="1" fill="#C8921A" stroke="#F5D070" stroke-width="0.5"/>
+      <!-- band dot accents -->
+      <circle cx="32" cy="37" r="1.2" fill="rgba(15,6,2,0.5)"/>
+      <circle cx="46" cy="37" r="1.2" fill="rgba(15,6,2,0.5)"/>
+    </svg>
+    <div class="wordmark">Royal <em>Feel</em></div>
+    <div class="tagline">Family Restaurant · Durg</div>
+    <div class="ornament-row"><div class="orn-diamond"></div></div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="dot-sm v" style="background:rgba(50,180,100,0.25);border-color:#3CB371;"></div> Vegetarian</div>
+    <div class="legend-item"><div class="dot-sm n" style="background:rgba(200,40,40,0.25);border-color:#C83030;"></div> Non-Vegetarian</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs-wrap">
+    <div class="tabs">
+      <button class="tab active" onclick="filter('all',this)">All</button>
+      <button class="tab" onclick="filter('starters',this)">Starters</button>
+      <button class="tab" onclick="filter('mains',this)">Mains</button>
+      <button class="tab" onclick="filter('rice',this)">Rice & Biryani</button>
+      <button class="tab" onclick="filter('breads',this)">Breads</button>
+      <button class="tab" onclick="filter('indo',this)">Indo-Chinese</button>
+      <button class="tab" onclick="filter('drinks',this)">Drinks</button>
+    </div>
+  </div>
+
+  <div id="menu-body"></div>
+
+  <div class="menu-footer">
+    <div class="footer-ornament">✦ ✦ ✦</div>
+    <div class="footer-text">All prices in ₹ &nbsp;·&nbsp; Taxes as applicable<br>Walk-ins welcome &nbsp;·&nbsp; Group seating available</div>
+    <div class="footer-addr">Opp. Jaimini Hospital, Potiya Road, Adarsh Nagar, Durg – 491001</div>
+  </div>
+</div>
+
+<script>
+const cats=[
+  {key:"starters",icon:"🔥",title:"Starters & Kebabs",items:[
+    {v:1,name:"Paneer Tikka",desc:"Marinated cottage cheese grilled in tandoor with peppers & onions",price:"₹220"},
+    {v:1,name:"Veg Seekh Kebab",desc:"Spiced mixed vegetable kebabs, served with mint chutney",price:"₹180"},
+    {v:1,name:"Crispy Corn",desc:"Sweet corn tossed with spices, herbs, and lime",price:"₹150"},
+    {v:1,name:"Masala Papad",desc:"Crispy papad topped with onion, tomato & green chilli",price:"₹40"},
+    {v:0,name:"Chicken Tikka",desc:"Tender chicken pieces in yoghurt marinade, char-grilled",price:"₹260"},
+    {v:0,name:"Chicken Lollipop",desc:"Spicy fried chicken wings, Indo-Chinese style",price:"₹240"},
+  ]},
+  {key:"mains",icon:"🍛",title:"Main Course",items:[
+    {v:1,name:"Butter Paneer Masala",desc:"Soft paneer in a rich tomato-butter-cream gravy",price:"₹200"},
+    {v:1,name:"Kadhai Paneer",desc:"Paneer & capsicum cooked in a spiced kadhai masala",price:"₹190"},
+    {v:1,name:"Shahi Paneer",desc:"Paneer in a royal cashew-onion cream sauce",price:"₹210"},
+    {v:1,name:"Dal Fry",desc:"Yellow lentils tempered with cumin, garlic & desi ghee",price:"₹130"},
+    {v:1,name:"Dal Makhani",desc:"Slow-cooked black lentils in butter and cream",price:"₹160"},
+    {v:1,name:"Aloo Gobi",desc:"Dry-spiced cauliflower and potato with cumin & ginger",price:"₹140"},
+    {v:1,name:"Mix Veg Curry",desc:"Seasonal vegetables in a light homestyle masala gravy",price:"₹150"},
+    {v:1,name:"Matar Paneer",desc:"Green peas and paneer in a spiced tomato onion gravy",price:"₹180"},
+    {v:0,name:"Chicken Curry",desc:"Tender chicken in a robust onion-tomato-masala gravy",price:"₹240"},
+    {v:0,name:"Butter Chicken",desc:"Classic mildly spiced chicken in creamy tomato sauce",price:"₹260"},
+    {v:0,name:"Mutton Curry",desc:"Slow-cooked mutton in aromatic whole spice gravy",price:"₹320"},
+  ]},
+  {key:"rice",icon:"🍚",title:"Rice & Biryani",items:[
+    {v:1,name:"Veg Biryani",desc:"Fragrant basmati with vegetables, whole spices & raita",price:"₹200"},
+    {v:1,name:"Jeera Rice",desc:"Steamed basmati tempered with cumin seeds",price:"₹100"},
+    {v:1,name:"Dal Khichdi",desc:"Comforting lentil and rice, served with ghee",price:"₹130"},
+    {v:1,name:"Veg Pulao",desc:"Lightly spiced rice with mixed vegetables",price:"₹150"},
+    {v:0,name:"Chicken Biryani",desc:"Dum-cooked chicken biryani with saffron & caramelised onions",price:"₹280"},
+    {v:0,name:"Egg Biryani",desc:"Basmati rice layered with spiced boiled eggs",price:"₹220"},
+  ]},
+  {key:"breads",icon:"🫓",title:"Breads from the Tandoor",items:[
+    {v:1,name:"Tandoori Roti",desc:"Whole wheat bread baked in clay oven",price:"₹20"},
+    {v:1,name:"Butter Naan",desc:"Soft leavened bread brushed with butter",price:"₹40"},
+    {v:1,name:"Garlic Naan",desc:"Naan topped with garlic and fresh coriander",price:"₹50"},
+    {v:1,name:"Lachha Paratha",desc:"Flaky layered whole-wheat paratha",price:"₹45"},
+    {v:1,name:"Missi Roti",desc:"Spiced chickpea flour flatbread",price:"₹35"},
+    {v:1,name:"Puri (2 pcs)",desc:"Deep-fried fluffy puffed bread",price:"₹30"},
+  ]},
+  {key:"indo",icon:"🥢",title:"Indo-Chinese",items:[
+    {v:1,name:"Veg Fried Rice",desc:"Stir-fried rice with vegetables and soy sauce",price:"₹150"},
+    {v:1,name:"Veg Hakka Noodles",desc:"Stir-fried noodles with crisp vegetables",price:"₹160"},
+    {v:1,name:"Chilli Paneer (dry)",desc:"Crispy paneer tossed in soy, chilli & capsicum",price:"₹200"},
+    {v:1,name:"Veg Manchurian Gravy",desc:"Vegetable balls in thick spiced Manchurian sauce",price:"₹180"},
+    {v:1,name:"Veg Spring Rolls (4 pcs)",desc:"Crispy rolls stuffed with spiced vegetables",price:"₹160"},
+    {v:0,name:"Chicken Fried Rice",desc:"Indo-Chinese fried rice with egg & chicken",price:"₹200"},
+    {v:0,name:"Chilli Chicken (dry)",desc:"Crispy chicken in tangy garlic-chilli sauce",price:"₹230"},
+    {v:0,name:"Chicken Hakka Noodles",desc:"Stir-fried noodles with chicken and sauces",price:"₹200"},
+  ]},
+  {key:"drinks",icon:"🥛",title:"Drinks & Sides",items:[
+    {v:1,name:"Sweet Lassi",desc:"Chilled thick yoghurt drink with sugar",price:"₹60"},
+    {v:1,name:"Salted Lassi",desc:"Refreshing yoghurt with salt and cumin",price:"₹60"},
+    {v:1,name:"Mango Lassi",desc:"Thick yoghurt blended with fresh mango pulp",price:"₹80"},
+    {v:1,name:"Cold Drink (bottle)",desc:"Pepsi, Sprite, or Coca-Cola",price:"₹40"},
+    {v:1,name:"Raita",desc:"Chilled yoghurt with boondi or cucumber & spices",price:"₹50"},
+    {v:1,name:"Green Salad",desc:"Fresh cucumber, onion, tomato with lemon",price:"₹50"},
+  ]},
+];
+
+function render(f){
+  const b=document.getElementById('menu-body');
+  b.innerHTML='';
+  cats.forEach((cat,ci)=>{
+    if(f!=='all'&&cat.key!==f)return;
+    const sec=document.createElement('div');
+    sec.className='cat-section';
+    sec.style.animationDelay=(ci*0.05)+'s';
+    sec.innerHTML=`
+      <div class="cat-header">
+        <div class="cat-icon">${cat.icon}</div>
+        <div><div class="cat-title">${cat.title}</div><div class="cat-count">${cat.items.length} dishes</div></div>
+        <div class="cat-line"></div>
+      </div>
+      <div class="items-grid">
+        ${cat.items.map(it=>`
+          <div class="item">
+            <div class="item-left">
+              <div class="item-name-row">
+                <div class="dot ${it.v?'v':'n'}"></div>
+                <div class="item-name">${it.name}</div>
+              </div>
+              <div class="item-desc">${it.desc}</div>
+            </div>
+            <div class="price-col">
+              <div class="item-price">${it.price}</div>
+            </div>
+          </div>`).join('')}
+      </div>`;
+    b.appendChild(sec);
+  });
+}
+
+function filter(k,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  render(k);
+}
+
+render('all');
+</script>
